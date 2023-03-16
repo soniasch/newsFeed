@@ -2,7 +2,7 @@ const http = require('http');
 const fs = require('fs');
 const path = require('path');
 const Handlebars = require('handlebars');
-const { getLatestItems, refetchDiFeed } = require('./rssHandler');
+const { getLatestItems } = require('./rssHandler');
 
 const port = 8080;
 const templatePath = path.join(__dirname, 'template.hbs');
@@ -22,7 +22,7 @@ const server = http.createServer(async (req, res) => {
 
   // Compile the template and generate the HTML content
   const compiledTemplate = Handlebars.compile(template);
-  const html = compiledTemplate({ items: latestItems, refetchDIFeed: refetchDiFeed });
+  const html = compiledTemplate({ items: latestItems });
 
   // Send the HTML content to the client
   res.writeHead(200, { 'Content-Type': 'text/html' });

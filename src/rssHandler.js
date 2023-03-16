@@ -14,12 +14,6 @@ async function getLatestItems() {
   }
 }
 
-function refetchDiFeed() {
-  console.log('refetch');
-  getLatestItems();
-}
-
 module.exports = {
-  getLatestItems,
-  refetchDiFeed
+  getLatestItems
 };
